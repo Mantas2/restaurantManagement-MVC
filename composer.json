@@ -1,0 +1,14 @@
+{
+    "name": "idk/idk",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
