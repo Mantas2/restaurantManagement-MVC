@@ -13,5 +13,5 @@ Also, to create a database, you must execute the db container, and run following
     id INT PRIMARY KEY AUTO_INCREMENT,
     table_number INT NOT NULL,
     seats INT NOT NULL,
-    BIT(1) NOT NULL
+    is_available BIT(1) NOT NULL
   );>
