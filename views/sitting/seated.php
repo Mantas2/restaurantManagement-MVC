@@ -6,13 +6,10 @@
 <body>
 	<p>You have been assigned a table</p>
 
-    <form action="/eating/dish" method="post">
-		<label for="dish">Please choose a dish:</label>
-		<select id="dish" name="dish">
-		    <option value="eggs">Eggs</option>
-			<option value="soup">Soup</option>
-		</select>
-		<input type="submit" value="Register">
+	<p>Would you like to choose a dish?</p>
+
+	<form action="/sit/seated/choose" method="post">
+  		<input type="submit" value="Choose a Dish">
 	</form>
 
     </body>
