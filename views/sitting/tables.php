@@ -15,35 +15,13 @@
 		<label for="table">Currently available tables:</label>
 		<select id="tableOption" name="tableOption">
 
-        <?php if($checkSeats[0]['is_available'] == 0): ?>
-		    <option value="1" disabled>Table <?= $checkSeats[0]['table_number'] ?></option>
-        <?php else: ?>
-            <option value="1">Table <?= $checkSeats[0]['table_number'] ?></option>
-        <?php endif; ?>
-
-        <?php if($checkSeats[1]['is_available'] == 0): ?>
-			<option value="2" disabled>Table <?= $checkSeats[1]['table_number'] ?></option>
-        <?php else: ?>
-            <option value="2">Table <?= $checkSeats[1]['table_number'] ?></option>
-        <?php endif; ?>
-
-        <?php if($checkSeats[2]['is_available'] == 0): ?>
-			<option value="3" disabled>Table <?= $checkSeats[2]['table_number'] ?></option>
-        <?php else: ?>
-            <option value="3">Table <?= $checkSeats[2]['table_number'] ?></option>
-        <?php endif; ?>
-
-        <?php if($checkSeats[3]['is_available'] == 0): ?>
-			<option value="4" disabled>Table <?= $checkSeats[3]['table_number'] ?></option>
-        <?php else: ?>
-            <option value="4">Table <?= $checkSeats[3]['table_number'] ?></option>
-        <?php endif; ?>
-
-        <?php if($checkSeats[4]['is_available'] == 0): ?>
-			<option value="5" disabled>Table <?= $checkSeats[4]['table_number'] ?></option>
-        <?php else: ?>
-            <option value="5">Table <?= $checkSeats[4]['table_number'] ?></option>
-        <?php endif; ?>
+        <?php for ($i = 0; $i <= 4; $i ++): ?> 
+            <?php if($checkSeats[$i]['is_available'] == 0): ?>
+                <option value="1" disabled>Table <?= $checkSeats[$i]['table_number'] ?></option>
+            <?php else: ?>
+                <option value="1">Table <?= $checkSeats[$i]['table_number'] ?></option>
+            <?php endif; ?>
+        <?php endfor; ?>
 
 		</select>
 		<input type="submit" value="Register">

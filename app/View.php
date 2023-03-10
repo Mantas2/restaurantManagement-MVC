@@ -21,9 +21,9 @@ class View
             extract($this->param);
             include $viewPath;
 
-        //    echo '<pre>';
-        //    var_dump($this->param);
-        //    echo '</pre>';
+        #    echo '<pre>';
+        #    var_dump($this->param);
+        #    echo '</pre>';
 
         } else {
             throw new ViewNotFoundException(); 
