@@ -5,14 +5,14 @@ services:
     build:
       context: ""
       dockerfile: Dockerfile
-    container_name: php_menu-app-mvc-test
+    container_name: php_menu-app-mvc
     restart: always
     working_dir: /var/www/
     volumes:
       - ../:/var/www
   nginx:
     image: nginx:1.19-alpine
-    container_name: php_menu-nginx-mvc-test
+    container_name: php_menu-nginx-mvc
     restart: always
     ports:
       - 8000:80
@@ -20,7 +20,7 @@ services:
       - ../:/var/www
       - ./nginx:/etc/nginx/conf.d
   db:
-    container_name: php_menu-db-mvc-test
+    container_name: php_menu-db-mvc
     image: mysql:8.0
     volumes:
       - ../storage/mysql:/var/lib/mysql
