@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS my_db;
 CREATE DATABASE my_db;
 
 USE my_db;
@@ -30,7 +31,7 @@ CREATE TABLE Dish_Ingredient (
   FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
 );
 
-INSERT INTO tables (table_number, seats, occupied) VALUES (1, 5, 1), (2, 5, 1), (3, 5, 1), (4, 5, 1), (5, 5, 1);
+INSERT INTO tables (table_number, seats, is_available) VALUES (1, 5, 1), (2, 5, 1), (3, 5, 1), (4, 5, 1), (5, 5, 1);
 
 INSERT INTO ingredients (name, quantity_on_hand) VALUES ('Ground Beef', 100), ('Tomato Sauce', 100), ('Chicken Breast', 100);
 

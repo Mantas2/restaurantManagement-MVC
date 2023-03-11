@@ -2,7 +2,7 @@
 wip
 
 To install composer dependencies, run
-<docker exec -it php_menu-app-mvc bash> and run the composer install command. This will create the vendor dir.
+<docker exec -it php_menu-app-mvc-test composer install>
 
 You should also create a .env file following the .env.example
 

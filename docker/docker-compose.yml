@@ -5,14 +5,14 @@ services:
     build:
       context: ""
       dockerfile: Dockerfile
-    container_name: php_menu-app-mvc
+    container_name: php_menu-app-mvc-test
     restart: always
     working_dir: /var/www/
     volumes:
       - ../:/var/www
   nginx:
     image: nginx:1.19-alpine
-    container_name: php_menu-nginx-mvc
+    container_name: php_menu-nginx-mvc-test
     restart: always
     ports:
       - 8000:80
@@ -20,15 +20,15 @@ services:
       - ../:/var/www
       - ./nginx:/etc/nginx/conf.d
   db:
-    container_name: php_menu-db-mvc
+    container_name: php_menu-db-mvc-test
     image: mysql:8.0
     volumes:
       - ../storage/mysql:/var/lib/mysql
-      - ../mysql-data:/docker-entrypoint-initdb.d
-    command: --default-authentication-plugin=mysql_native_password --init-file=/docker-entrypoint-initdb.d/init.sql
+      - ../sql-scripts:/docker-entrypoint-initdb.d
+    command: --authentication_policy=mysql_native_password --init-file=/docker-entrypoint-initdb.d/init.sql
     restart: always
     environment:
-      MYSQL_DATABASE: my_db
+#      MYSQL_DATABASE: my_db
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 3306:3306
