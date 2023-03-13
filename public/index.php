@@ -6,6 +6,8 @@ use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\TablesController;
 use App\Controllers\DishController;
+use App\Models\Tables;
+use App\Models\Produce;
 
 //const BASE_PATH = __DIR__ . '/../';
 
@@ -19,8 +21,8 @@ $router = new Router();
 
 $router
     ->get('/', [new HomeController(), 'index'])
-    ->post('/sit', [new TablesController(), 'seats'])
-    ->post('/sit/seated', [new TablesController(), 'chooseTable'])
-    ->post('/sit/seated/choose', [new DishController(), 'chooseDish']);
+    ->post('/sit', [new TablesController(new Tables), 'seats'])
+    ->post('/sit/seated', [new TablesController(new Tables), 'chooseTable'])
+    ->post('/sit/seated/choose', [new DishController(new Produce), 'chooseDish']);
 
 $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

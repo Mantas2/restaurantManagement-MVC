@@ -8,19 +8,10 @@ use App\DB;
 
 class Tables extends DB
 {
-    public function check(string $people)
+    public function getQueryResults(string $sql): array
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM tables WHERE seats >= {$people} ORDER BY table_number ASC");
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
-        
-        return $stmt->fetchAll();
-    }
-
-    public function takeTable(string $table)
-    {
-        $stmt = $this->pdo->prepare("UPDATE tables SET is_available = false WHERE table_number = {$table}");
-        $stmt->execute();
-        
         return $stmt->fetchAll();
     }
 }
