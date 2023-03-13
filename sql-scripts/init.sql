@@ -7,7 +7,7 @@ CREATE TABLE tables (
   id INT PRIMARY KEY AUTO_INCREMENT,
   table_number INT NOT NULL,
   seats INT NOT NULL,
-  is_available BIT(1) NOT NULL
+  is_available BOOLEAN DEFAULT true
 );
 
 CREATE TABLE ingredients (
