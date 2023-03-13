@@ -15,13 +15,13 @@
 		<label for="table">Currently available tables:</label>
 		<select id="tableOption" name="tableOption">
 
-        <?php for ($i = 0; $i <= 4; $i ++): ?> 
-            <?php if($checkSeats[$i]['is_available'] == 0): ?>
-                <option value="1" disabled>Table <?= $checkSeats[$i]['table_number'] ?></option>
+        <?php foreach ($checkSeats as $table): ?> 
+            <?php if($table['is_available'] == 0): ?>
+                <option value="<?= $table['table_number'] ?>" disabled>Table <?= $table['table_number'] ?></option>
             <?php else: ?>
-                <option value="1">Table <?= $checkSeats[$i]['table_number'] ?></option>
+                <option value="<?= $table['table_number'] ?>">Table <?= $table['table_number'] ?></option>
             <?php endif; ?>
-        <?php endfor; ?>
+        <?php endforeach; ?>
 
 		</select>
 		<input type="submit" value="Register">
