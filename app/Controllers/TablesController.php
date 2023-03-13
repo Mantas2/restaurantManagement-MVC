@@ -9,22 +9,16 @@ use App\Models\Tables;
 
 class TablesController
 {
+
+    public function __construct(
+        protected Tables $tablesModel
+    ){}
+
     public function seats()
     {
-
         $checkSeats = $this->validateData($_POST['guests']);
 
         return (new View('sitting/tables', ['checkSeats' => $checkSeats]))->make();
-
-    }
-
-    public function validateData(string $guests)
-    {
-        // check that does not exceed 5 seats and table is free
-        $tablesModel = new Tables();
-        $checkSeats = $tablesModel->check($guests);
-
-        return $checkSeats;
     }
 
     public function chooseTable()
@@ -36,10 +30,21 @@ class TablesController
         return (new View('sitting/seated', ['tables' => $table]))->make();
     }
 
+    public function validateData(string $guests)
+    {
+        // check that does not exceed 5 seats and table is free
+        $checkSeats = $this->tablesModel->getQueryResults("
+        SELECT * FROM tables WHERE seats >= {$guests} ORDER BY table_number ASC
+        ");
+
+        return $checkSeats;
+    }
+
     public function takeTable(string $table)
     {
-        $tablesModel = new Tables();
-        $takeTable = $tablesModel->takeTable($table);
+        $takeTable = $this->tablesModel->getQueryResults("
+        UPDATE tables SET is_available = false WHERE table_number = {$table}
+        ");
 
         return $takeTable;
     }
