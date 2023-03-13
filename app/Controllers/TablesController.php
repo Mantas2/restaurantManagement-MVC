@@ -23,7 +23,7 @@ class TablesController
 
     public function chooseTable()
     {
-
+        var_dump($_POST);
         $this->takeTable($_POST['tableOption']);
         $table = $_POST['tableOption'];
 
